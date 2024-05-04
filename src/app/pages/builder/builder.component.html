@@ -1,0 +1,72 @@
+<div id="wrapper">
+  <h1 class="title">PC Builder</h1>
+  <div class="parts-picker">
+    <form [formGroup]="pcBuildForm" (ngSubmit)="onSubmit()">
+      <div class="content">
+        <mat-form-field>
+          <mat-label>CPU</mat-label>
+          <mat-select formControlName="cpu">
+            <mat-option value="default">Choose a CPU</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="content">
+        <mat-form-field>
+          <mat-label>GPU</mat-label>
+          <mat-select formControlName="gpu">
+            <mat-option value="default">Choose a GPU</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="content">
+        <mat-form-field>
+          <mat-label>Motherboard</mat-label>
+          <mat-select id="motherboard" formControlName="motherboard">
+            <mat-option value="default">Choose a motherboard</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="content">
+        <mat-form-field>
+          <mat-label>RAM</mat-label>
+          <mat-select formControlName="ram">
+            <mat-option value="default">Choose a RAM</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Number of rams</mat-label>
+          <input matInput type="number" id="ram-number" formControlName="ramNumber">
+        </mat-form-field>
+      </div>
+      <div class="content">
+        <mat-form-field>
+          <mat-label>PSU</mat-label>
+          <mat-select formControlName="psu">
+            <mat-option value="default">Choose a PSU</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="content">
+        <mat-form-field>
+          <mat-label>PC case</mat-label>
+          <mat-select formControlName="case">
+            <mat-option value="default">Choose a case</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="content">
+        <mat-form-field>
+          <mat-label for="drive">Choose a drive</mat-label>
+          <mat-select name="cpu" id="drive" formControlName="drive">
+            <mat-option value="default">Choose a drive</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label for="drive-number">Number of drives</mat-label>
+          <input matInput type="number" id="drive-number" formControlName="driveNumber">
+        </mat-form-field>
+      </div>
+      <button mat-raised-button type="submit" color="primary">Save</button>
+    </form>
+  </div>
+</div>

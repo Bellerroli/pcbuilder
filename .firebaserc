@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "webker-pcbuilder": {
+      "hosting": {
+        "pcbuilder": [
+          "webker-pcbuilder"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "webker-pcbuilder"
+  }
+}

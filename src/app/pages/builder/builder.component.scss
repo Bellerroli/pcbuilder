@@ -1,0 +1,30 @@
+.parts-picker{
+  margin: auto;
+  width: fit-content;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 5px 5px;
+  padding: 10px;
+}
+
+.content, form{
+  width: 100%;
+}
+
+.title{
+  display: block;
+  width: fit-content;
+  padding: 10px 20px;
+  font-size: 40px;
+  margin: 5px auto 20px auto;
+}
+
+#wrapper{
+  margin-top: 40px;
+  height: fit-content;
+}
+
+button:hover{
+  color: black;
+  background-color: #dddddd;
+}

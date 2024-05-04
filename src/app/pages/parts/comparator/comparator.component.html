@@ -1,0 +1,23 @@
+<div id="wrapper">
+  <mat-form-field>
+    <mat-select [(ngModel)]="selectedCategory" (change)="changeCategory()">
+      <mat-option *ngFor="let part of pcPartsComparator" [value]="part.id">{{part.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <form [formGroup]="comparatorForm" (ngSubmit)="compareParts()">
+    <mat-form-field>
+      <mat-select formControlName="part1">
+        <mat-option *ngFor="let part of selectedPCParts" [value]="part.id">{{part.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button type="submit">Compare</button>
+    <mat-form-field>
+      <mat-select formControlName="part2">
+        <mat-option *ngFor="let part of selectedPCParts" [value]="part.id">{{part.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+
+</div>

@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "pcbuilder",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}

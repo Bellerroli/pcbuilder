@@ -1,0 +1,41 @@
+<div id="wrapper">
+  Choose part category to upload:
+  <select [(ngModel)]="uploadFormPick" (change)="loadForm()">
+    <option value="cpu">CPU</option>
+    <option value="gpu">GPU</option>
+    <option value="ram">RAM</option>
+    <option value="motherboard">Motherboard</option>
+    <option value="psu">PSU</option>
+    <option value="case">Case</option>
+    <option value="drive">Drive</option>
+  </select>
+
+  <div class="upload-form">
+    <div [ngSwitch]="uploadFormPick">
+      <div *ngSwitchCase="'cpu'">
+        <app-cpu-uploader></app-cpu-uploader>
+      </div>
+      <div *ngSwitchCase="'gpu'">
+        <app-gpu-uploader></app-gpu-uploader>
+      </div>
+      <div *ngSwitchCase="'ram'">
+        <app-ram-uploader></app-ram-uploader>
+      </div>
+      <div *ngSwitchCase="'motherboard'">
+        <app-motherboard-uploader></app-motherboard-uploader>
+      </div>
+      <div *ngSwitchCase="'psu'">
+        <app-psu-uploader></app-psu-uploader>
+      </div>
+      <div *ngSwitchCase="'drive'">
+        <app-drive-uploader></app-drive-uploader>
+      </div>
+      <div *ngSwitchCase="'case'">
+        <app-case-uploader></app-case-uploader>
+      </div>
+      <div *ngSwitchDefault>
+        <app-cpu-uploader></app-cpu-uploader>
+      </div>
+    </div>
+  </div>
+</div>
