@@ -1,4 +1,4 @@
-form{
+form {
   margin: auto;
   width: fit-content;
   justify-content: center;
@@ -7,7 +7,7 @@ form{
   padding: 10px;
 }
 
-.title{
+.title {
   display: block;
   width: fit-content;
   padding: 10px 20px;
@@ -15,11 +15,16 @@ form{
   margin: 5px auto 20px auto;
 }
 
-#wrapper{
+#wrapper {
   margin-top: 40px;
 }
 
-button:hover{
+button:hover {
   color: black;
   background-color: #dddddd;
+}
+
+.error {
+  font-weight: bold;
+  color: red;
 }

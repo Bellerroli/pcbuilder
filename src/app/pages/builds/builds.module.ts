@@ -1,9 +1,12 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { BuildsRoutingModule } from './builds-routing.module';
-import { BuildsComponent } from './builds.component';
-import {MatCard, MatCardContent, MatCardHeader} from "@angular/material/card";
+import {BuildsRoutingModule} from './builds-routing.module';
+import {BuildsComponent} from './builds.component';
+import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardTitle} from "@angular/material/card";
+import {MatButton} from "@angular/material/button";
+import {MatList, MatListItem, MatListItemLine, MatListItemTitle} from "@angular/material/list";
+import {MatOption, MatSelect} from "@angular/material/select";
 
 
 @NgModule({
@@ -15,7 +18,17 @@ import {MatCard, MatCardContent, MatCardHeader} from "@angular/material/card";
     BuildsRoutingModule,
     MatCard,
     MatCardHeader,
-    MatCardContent
+    MatCardContent,
+    MatCardTitle,
+    MatCardActions,
+    MatButton,
+    MatList,
+    MatListItem,
+    MatListItemTitle,
+    MatListItemLine,
+    MatSelect,
+    MatOption
   ]
 })
-export class BuildsModule { }
+export class BuildsModule {
+}

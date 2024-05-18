@@ -4,19 +4,37 @@
     <mat-form-field>
       <mat-label>Username</mat-label>
       <input matInput formControlName="username">
-    </mat-form-field><br>
+    </mat-form-field>
+    <br>
     <mat-form-field>
       <mat-label>Email</mat-label>
       <input matInput type="text" id="email" formControlName="email">
-    </mat-form-field><br>
+    </mat-form-field>
+    <br>
+    <div *ngIf="signupForm.controls['email'].errors?.['required'] && signupForm.controls['email'].touched"
+         class="error">Email
+      is required!
+    </div>
     <mat-form-field>
       <mat-label>Password</mat-label>
       <input matInput type="password" id="pwd" formControlName="password">
-    </mat-form-field><br>
+    </mat-form-field>
+    <div *ngIf="signupForm.controls['password'].errors?.['required'] && signupForm.controls['password'].touched"
+         class="error">Password
+      is required!
+    </div>
+    <div *ngIf="signupForm.controls['password'].errors?.['minlength'] && signupForm.controls['password'].dirty"
+         class="error">Password must be 6 characters minimum!
+    </div>
+    <br>
     <mat-form-field>
       <mat-label>Confirm Password</mat-label>
       <input matInput type="password" id="repwd" formControlName="rePassword">
-    </mat-form-field><br>
+    </mat-form-field>
+    <div *ngIf="signupForm.errors?.['noMatch'] && signupForm.controls['rePassword'].touched"
+         class="error">{{ signupForm.errors?.["noMatch"] }}
+    </div>
+    <br>
     <button mat-raised-button type="submit" color="primary">Sign Up</button>
   </form>
 </div>

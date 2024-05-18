@@ -1,5 +1,83 @@
-<mat-card *ngFor="let pc of userFullPCs">
-  <mat-card-content>
-    {{pc.id}}
-  </mat-card-content>
-</mat-card>
+<div id="card-container">
+  <mat-card *ngFor="let pc of userFullPCs; index as i">
+    <mat-card-header>
+      <mat-card-title>PC #{{ i + 1 }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content *ngIf="pcBeingModified !== pc">
+      <mat-list>
+        <mat-list-item>
+          <span class="card-label" matListItemTitle>CPU</span>
+          <span matListItemLine>{{ pc.cpu.name }}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span class="card-label" matListItemTitle>GPU</span>
+          <span matListItemLine>{{ pc.gpu.name }}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span class="card-label" matListItemTitle>Motherboard</span>
+          <span matListItemLine>{{ pc.motherboard.name }}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span class="card-label" matListItemTitle>RAM</span>
+          <span matListItemLine>{{ pc.ram.name }} X {{ pc.ramNumber }}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span class="card-label" matListItemTitle>Drive</span>
+          <span matListItemLine>{{ pc.drive.name }} X {{ pc.driveNumber }}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span class="card-label" matListItemTitle>PSU</span>
+          <span matListItemLine>{{ pc.psu.name }}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span class="card-label" matListItemTitle>PC Case</span>
+          <span matListItemLine>{{ pc.case.name }}</span>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+    <mat-card-content *ngIf="pcBeingModified === pc">
+      <div class="card-label">CPU</div>
+      <mat-select [(value)]="pcBeingModified.cpu">
+        <mat-option [value]="pcBeingModified.cpu">{{ pcBeingModified.cpu.name }}</mat-option>
+        <mat-option *ngFor="let cpu of cpuUpdateList" [value]="cpu">{{ cpu.name }}</mat-option>
+      </mat-select>
+      <div class="card-label">GPU</div>
+      <mat-select [(value)]="pcBeingModified.gpu">
+        <mat-option [value]="pcBeingModified.gpu">{{ pcBeingModified.gpu.name }}</mat-option>
+        <mat-option *ngFor="let gpu of gpuUpdateList" [value]="gpu">{{ gpu.name }}</mat-option>
+      </mat-select>
+      <div class="card-label">Motherboard</div>
+      <mat-select [(value)]="pcBeingModified.motherboard">
+        <mat-option [value]="pcBeingModified.motherboard">{{ pcBeingModified.motherboard.name }}</mat-option>
+        <mat-option *ngFor="let motherboard of mbUpdateList" [value]="motherboard">{{ motherboard.name }}</mat-option>
+      </mat-select>
+      <div class="card-label">RAM</div>
+      <mat-select [(value)]="pcBeingModified.ram">
+        <mat-option [value]="pcBeingModified.ram">{{ pcBeingModified.ram.name }}</mat-option>
+        <mat-option *ngFor="let ram of ramUpdateList" [value]="ram">{{ ram.name }}</mat-option>
+      </mat-select>
+      <div class="card-label">Drive</div>
+      <mat-select [(value)]="pcBeingModified.drive">
+        <mat-option [value]="pcBeingModified.drive">{{ pcBeingModified.drive.name }}</mat-option>
+        <mat-option *ngFor="let drive of driveUpdateList" [value]="drive">{{ drive.name }}</mat-option>
+      </mat-select>
+      <div class="card-label">PSU</div>
+      <mat-select [(value)]="pcBeingModified.psu">
+        <mat-option [value]="pcBeingModified.psu">{{ pcBeingModified.psu.name }}</mat-option>
+        <mat-option *ngFor="let psu of psuUpdateList" [value]="psu">{{ psu.name }}</mat-option>
+      </mat-select>
+      <div class="card-label">PC Case</div>
+      <mat-select [(value)]="pcBeingModified.case">
+        <mat-option [value]="pcBeingModified.case">{{ pcBeingModified.case.name }}</mat-option>
+        <mat-option *ngFor="let pcCase of caseUpdateList" [value]="pcCase">{{ pcCase.name }}</mat-option>
+      </mat-select>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="updatePC()" *ngIf="pcBeingModified === pc">Save</button>
+      <button mat-raised-button (click)="cancelUpdate()" *ngIf="pcBeingModified === pc">Cancel</button>
+      <button mat-raised-button color="primary" (click)="updatingPC(pc)" *ngIf="pcBeingModified !== pc">Modify</button>
+      <button mat-raised-button class="delete-button" (click)="deletePC(pc)" *ngIf="pcBeingModified !== pc">Delete
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

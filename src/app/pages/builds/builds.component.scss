@@ -1,0 +1,25 @@
+#card-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+mat-card {
+  margin: 10px auto;
+  padding: 10px;
+  width: 25%;
+}
+
+.card-label {
+  font-weight: bold;
+}
+
+button {
+  margin: 5px 10px;
+}
+
+mat-select {
+  width: 100%;
+  padding: 10px;
+}

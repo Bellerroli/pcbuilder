@@ -5,13 +5,25 @@
       <mat-label>Email</mat-label>
       <input matInput type="text" id="email" formControlName="email">
     </mat-form-field>
+    <div *ngIf="loginForm.controls['email'].errors?.['required'] && loginForm.controls['email'].touched"
+         class="error">Email
+      is required!
+    </div>
     <br>
     <mat-form-field>
       <mat-label>Password</mat-label>
       <input matInput type="password" id="pwd" formControlName="password">
     </mat-form-field>
+    <div *ngIf="loginForm.controls['password'].errors?.['required'] && loginForm.controls['password'].touched"
+         class="error">Password
+      is required!
+    </div>
+    <div *ngIf="loginForm.controls['password'].errors?.['minlength'] && loginForm.controls['password'].dirty"
+         class="error">Password must be 6 characters minimum!
+    </div>
     <br>
     <button mat-raised-button type="submit" color="primary">Login</button>
   </form>
+  <div id="error">{{ error }}</div>
 </div>
 
