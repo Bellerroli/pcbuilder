@@ -1,9 +1,18 @@
-<form>
-  <label for="name">PSU name:</label>
-  <input type="text" id="name"><br>
-  <label for="voltage">Voltage:</label>
-  <input type="number" id="voltage"><br>
-  <label for="output">Output:</label>
-  <input type="number" id="output"><br>
-  <input type="submit" value="Send">
+<form [formGroup]="psuFormGroup" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <mat-label for="name">PSU name:</mat-label>
+    <input matInput type="text" id="name" formControlName="name">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label for="voltage">Voltage:</mat-label>
+    <input matInput type="number" id="voltage" formControlName="voltage">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label for="output">Output:</mat-label>
+    <input matInput type="number" id="output" formControlName="output">
+  </mat-form-field>
+  <br>
+  <button mat-raised-button type="submit" color="primary">Upload</button>
 </form>

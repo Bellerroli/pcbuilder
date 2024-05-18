@@ -1,37 +1,39 @@
 <div id="wrapper">
-  Choose part category to upload:
-  <select [(ngModel)]="uploadFormPick" (change)="loadForm()">
-    <option value="cpu">CPU</option>
-    <option value="gpu">GPU</option>
-    <option value="ram">RAM</option>
-    <option value="motherboard">Motherboard</option>
-    <option value="psu">PSU</option>
-    <option value="case">Case</option>
-    <option value="drive">Drive</option>
-  </select>
+<!--  <mat-form-field>-->
+<!--    <mat-label>Choose part category to upload:</mat-label>-->
+<!--    <mat-select [(ngModel)]="uploadFormPick" (change)="loadForm()">-->
+<!--      <mat-option [value]="'cpu'">CPU</mat-option>-->
+<!--      <mat-option [value]="'gpu'">GPU</mat-option>-->
+<!--      <mat-option [value]="'ram'">RAM</mat-option>-->
+<!--      <mat-option [value]="'motherboard'">Motherboard</mat-option>-->
+<!--      <mat-option [value]="'psu'">PSU</mat-option>-->
+<!--      <mat-option [value]="'case'">Case</mat-option>-->
+<!--      <mat-option [value]="'drive'">Drive</mat-option>-->
+<!--    </mat-select>-->
+<!--  </mat-form-field>-->
 
   <div class="upload-form">
     <div [ngSwitch]="uploadFormPick">
-      <div *ngSwitchCase="'cpu'">
-        <app-cpu-uploader></app-cpu-uploader>
+      <div *ngSwitchCase="'CPU'">
+        <app-cpu-uploader (cpuEmitter)="saveCPU($event)"></app-cpu-uploader>
       </div>
-      <div *ngSwitchCase="'gpu'">
-        <app-gpu-uploader></app-gpu-uploader>
+      <div *ngSwitchCase="'GPU'">
+        <app-gpu-uploader (gpuEmitter)="saveGPU($event)"></app-gpu-uploader>
       </div>
-      <div *ngSwitchCase="'ram'">
-        <app-ram-uploader></app-ram-uploader>
+      <div *ngSwitchCase="'RAM'">
+        <app-ram-uploader (ramEmitter)="saveRAM($event)"></app-ram-uploader>
       </div>
-      <div *ngSwitchCase="'motherboard'">
-        <app-motherboard-uploader></app-motherboard-uploader>
+      <div *ngSwitchCase="'Motherboard'">
+        <app-motherboard-uploader (mbEmitter)="saveMotherboard($event)"></app-motherboard-uploader>
       </div>
-      <div *ngSwitchCase="'psu'">
-        <app-psu-uploader></app-psu-uploader>
+      <div *ngSwitchCase="'PSU'">
+        <app-psu-uploader (psuEmitter)="savePSU($event)"></app-psu-uploader>
       </div>
-      <div *ngSwitchCase="'drive'">
-        <app-drive-uploader></app-drive-uploader>
+      <div *ngSwitchCase="'Drive'">
+        <app-drive-uploader (driveEmitter)="saveDrive($event)"></app-drive-uploader>
       </div>
-      <div *ngSwitchCase="'case'">
-        <app-case-uploader></app-case-uploader>
+      <div *ngSwitchCase="'Case'">
+        <app-case-uploader (caseEmitter)="saveCase($event)"></app-case-uploader>
       </div>
       <div *ngSwitchDefault>
         <app-cpu-uploader></app-cpu-uploader>

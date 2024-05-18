@@ -1,9 +1,18 @@
-<form>
-  <label for="name">CPU name:</label>
-  <input type="text" id="name"><br>
-  <label for="clockspeed">Clockspeed:</label>
-  <input type="number" id="clockspeed"><br>
-  <label for="cores">Number of cores:</label>
-  <input type="number" id="cores"><br>
-  <input type="submit" value="Send">
+<form [formGroup]="cpuFormGroup" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <mat-label for="name">CPU name:</mat-label>
+    <input matInput type="text" id="name" formControlName="name">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label for="clockspeed">Clockspeed:</mat-label>
+    <input matInput type="number" id="clockspeed" formControlName="clockSpeed">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label for="cores">Number of cores:</mat-label>
+    <input matInput type="number" id="cores" formControlName="cores">
+  </mat-form-field>
+  <br>
+  <button mat-raised-button type="submit" color="primary">Upload</button>
 </form>

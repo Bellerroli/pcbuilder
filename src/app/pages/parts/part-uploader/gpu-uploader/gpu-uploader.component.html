@@ -1,9 +1,18 @@
-<form>
-  <label for="name">GPU name:</label>
-  <input type="text" id="name"><br>
-  <label for="clockspeed">Clockspeed:</label>
-  <input type="number" id="clockspeed"><br>
-  <label for="memory">Size of memory(in GB):</label>
-  <input type="number" id="memory"><br>
-  <input type="submit" value="Send">
+<form [formGroup]="gpuFormGroup" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <mat-label for="name">GPU name:</mat-label>
+    <input matInput type="text" id="name" formControlName="name">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label for="clockspeed">Clockspeed:</mat-label>
+    <input matInput type="number" id="clockspeed" formControlName="clockSpeed">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label for="memory">Size of memory(in GB):</mat-label>
+    <input matInput type="number" id="memory" formControlName="memorySize">
+  </mat-form-field>
+  <br>
+  <button mat-raised-button type="submit" color="primary">Upload</button>
 </form>

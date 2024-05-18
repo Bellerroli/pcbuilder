@@ -13,11 +13,12 @@
       <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
         <ul fxLayout fxLayoutGap="15px" class="nav-items">
           <li><a routerLink="/main">Home</a></li>
-          <li><a routerLink="/builder">Builder</a></li>
+          <li *ngIf="isUserLoggedIn()"><a routerLink="/builder">Builder</a></li>
           <li><a routerLink="/parts">Parts</a></li>
-          <li><a routerLink="/login">Login</a></li>
-          <li><a routerLink="/signup">Sign up</a></li>
-          <li><a routerLink="/login" (click)="logout()">Logout</a></li>
+          <li *ngIf="isUserLoggedIn()"><a routerLink="/build">My builds</a></li>
+          <li *ngIf="!isUserLoggedIn()"><a routerLink="/login">Login</a></li>
+          <li *ngIf="!isUserLoggedIn()"><a routerLink="/signup">Sign up</a></li>
+          <li *ngIf="isUserLoggedIn()"><a routerLink="/login" (click)="logout()">Logout</a></li>
         </ul>
       </div>
     </mat-toolbar>

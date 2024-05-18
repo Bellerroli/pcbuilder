@@ -7,11 +7,15 @@ import {RAM} from "./RAM";
 import {PSU} from "./PSU";
 
 export interface PC{
-  cpu: CPU;
-  gpu: GPU;
-  motherboard: Motherboard;
-  drives: Array<Drive>;
-  case: PCCase;
-  rams: Array<RAM>;
-  psu: PSU;
+  id: string,
+  userID: string,
+  cpu: string;
+  gpu: string;
+  motherboard: string;
+  drive: string;
+  driveNumber: number;
+  case: string;
+  ram: string;
+  ramNumber: number;
+  psu: string;
 }

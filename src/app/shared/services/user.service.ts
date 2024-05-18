@@ -15,7 +15,9 @@ export class UserService {
   }
 
   read(){}
-  getAll(){}
+  findByID(id: string){
+    return this.fs.collection<User>(this.collectionName, ref=> ref.where('id', '==', id).limit(1)).valueChanges();
+  }
   update(){}
 
 }

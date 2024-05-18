@@ -1,12 +1,21 @@
-<form>
-  <label for="name">Drive name:</label>
-  <input type="text" id="name"><br>
-  <label for="drive-type">Type of drive:</label>
-  <select id="drive-type">
-    <option [ngValue]="DriveType.SSD">SSD</option>
-    <option [ngValue]="DriveType.HDD">HDD</option>
-  </select><br>
-  <label for="size">Space size (in GB):</label>
-  <input type="number" id="size"><br>
-  <input type="submit" value="Send">
+<form [formGroup]="driveFormGroup" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <mat-label for="name">Drive name:</mat-label>
+    <input matInput type="text" id="name" formControlName="name">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label for="drive-type">Type of drive:</mat-label>
+    <mat-select id="drive-type" formControlName="type">
+      <mat-option [value]="DriveType.SSD">SSD</mat-option>
+      <mat-option [value]="DriveType.HDD">HDD</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label for="size">Space size (in GB):</mat-label>
+    <input matInput type="number" id="size" formControlName="size">
+  </mat-form-field>
+  <br>
+  <button mat-raised-button type="submit" color="primary">Upload</button>
 </form>

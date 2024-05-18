@@ -1,11 +1,23 @@
-<form>
-  <label for="name">Case name:</label>
-  <input type="text" id="name"><br>
-  <label for="length">Length:</label>
-  <input type="number" id="length"><br>
-  <label for="width">Width:</label>
-  <input type="number" id="width"><br>
-  <label for="height">Height:</label>
-  <input type="number" id="height"><br>
-  <input type="submit" value="Send">
+<form [formGroup]="caseFormGroup" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <mat-label for="name">Case name:</mat-label>
+    <input matInput type="text" id="name" formControlName="name">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label for="length">Length:</mat-label>
+    <input matInput type="number" id="length"  formControlName="length">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label for="width">Width:</mat-label>
+    <input matInput type="number" id="width" formControlName="width">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label for="height">Height:</mat-label>
+    <input matInput type="number" id="height" formControlName="height">
+  </mat-form-field>
+  <br>
+  <button mat-raised-button type="submit" color="primary">Upload</button>
 </form>

@@ -1,7 +1,13 @@
-<form>
-  <label for="name">Motherboard name:</label>
-  <input type="text" id="name"><br>
-  <label for="rams">Number of RAM slots:</label>
-  <input type="number" id="rams"><br>
-  <input type="submit" value="Send">
+<form [formGroup]="mbFormGroup" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <mat-label for="name">Motherboard name:</mat-label>
+    <input matInput type="text" id="name" formControlName="name">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label for="rams">Number of RAM slots:</mat-label>
+    <input matInput type="number" id="rams" formControlName="ramNumbers">
+  </mat-form-field>
+  <br>
+  <button mat-raised-button type="submit" color="primary">Upload</button>
 </form>

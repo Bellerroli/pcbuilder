@@ -1,4 +1,4 @@
 export enum DriveType{
-  HDD,
-  SSD
+  HDD="HDD",
+  SSD="SSD"
 }

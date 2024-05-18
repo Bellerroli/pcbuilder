@@ -1,6 +1,11 @@
-
 <div id="wrapper">
-  <app-comparator (selectedCategoryEmitter)="pcPartCategory" [pcPartsComparator]="pcParts"></app-comparator>
-  <app-part-uploader></app-part-uploader>
+  <div class="compare">
+    <app-comparator (selectedCategoryEmitter)="changeCategory($event)" [pcPartsComparator]="pcParts"></app-comparator>
+  </div>
+  <div class="part-upload">
+    <h2><u>Upload new parts</u> </h2>
+    <app-part-uploader [uploadFormPick]="pcPartCategory"></app-part-uploader>
+  </div>
+
 </div>
 

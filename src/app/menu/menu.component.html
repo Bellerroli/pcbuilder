@@ -3,23 +3,27 @@
     <mat-icon>house</mat-icon>
     <span>Home</span>
   </a>
-  <a mat-list-item routerLink="/builder" (click)="close()">
+  <a mat-list-item routerLink="/builder" (click)="close()" *ngIf="loggedIn">
     <mat-icon>build</mat-icon>
     <span>Builder</span>
   </a>
-  <a mat-list-item routerLink="/parts" (click)="close()">
+  <a mat-list-item routerLink="/parts" (click)="close()" >
     <mat-icon>memory</mat-icon>
     <span>Parts</span>
   </a>
-  <a mat-list-item routerLink="/login" (click)="close()">
+  <a mat-list-item routerLink="/build" (click)="close()" *ngIf="loggedIn">
+    <mat-icon>token</mat-icon>
+    <span>My builds</span>
+  </a>
+  <a mat-list-item routerLink="/login" (click)="close()" *ngIf="!loggedIn">
     <mat-icon>login</mat-icon>
     <span>Login</span>
   </a>
-  <a mat-list-item routerLink="/signup" (click)="close()">
+  <a mat-list-item routerLink="/signup" (click)="close()" *ngIf="!loggedIn">
     <mat-icon>app_registration</mat-icon>
     <span>Sign up</span>
   </a>
-  <a mat-list-item routerLink="/login" (click)="logout()">
+  <a mat-list-item routerLink="/login" (click)="logout()" *ngIf="loggedIn">
     <mat-icon>logout</mat-icon>
     <span>Logout</span></a>
 </mat-nav-list>
