@@ -101,7 +101,7 @@ export class BuilderComponent implements OnInit {
       ram: this.pcBuildForm.get("ram")?.value,
       ramNumber: this.pcBuildForm.get("ramNumber")?.value,
       psu: this.pcBuildForm.get("psu")?.value,
-      drive: this.pcBuildForm.get("psu")?.value,
+      drive: this.pcBuildForm.get("drive")?.value,
       driveNumber: this.pcBuildForm.get("driveNumber")?.value,
       case: this.pcBuildForm.get("case")?.value,
       motherboard: this.pcBuildForm.get("motherboard")?.value,
