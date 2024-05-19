@@ -3,6 +3,14 @@
     <mat-label for="name">Drive name:</mat-label>
     <input matInput type="text" id="name" formControlName="name">
   </mat-form-field>
+  <div class="error"
+       *ngIf="driveFormGroup.controls['name'].errors?.['required'] && driveFormGroup.controls['name'].touched">Field is
+    reqiured!
+  </div>
+  <div class="error"
+       *ngIf="driveFormGroup.controls['name'].errors?.['minlength'] && driveFormGroup.controls['name'].dirty">
+    Name should be 10 characters long minimum
+  </div>
   <br>
   <mat-form-field>
     <mat-label for="drive-type">Type of drive:</mat-label>
@@ -11,11 +19,22 @@
       <mat-option [value]="DriveType.HDD">HDD</mat-option>
     </mat-select>
   </mat-form-field>
+  <div class="error"
+       *ngIf="driveFormGroup.controls['type'].errors?.['required'] && driveFormGroup.controls['type'].touched">Field is
+    reqiured!
+  </div>
   <br>
   <mat-form-field>
     <mat-label for="size">Space size (in GB):</mat-label>
     <input matInput type="number" id="size" formControlName="size">
   </mat-form-field>
+  <div class="error"
+       *ngIf="driveFormGroup.controls['size'].errors?.['required'] && driveFormGroup.controls['size'].touched">Field is
+    reqiured!
+  </div>
   <br>
   <button mat-raised-button type="submit" color="primary">Upload</button>
+  <div class="success"
+       *ngIf="success">{{ success }}
+  </div>
 </form>

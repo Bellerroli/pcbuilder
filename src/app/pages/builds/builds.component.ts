@@ -20,6 +20,8 @@ export class BuildsComponent implements OnInit {
   userFullPCs: Array<PCFullData> = [];
   userID: string = "";
   pcBeingModified: PCFullData | undefined;
+  success: string | undefined;
+  error: string | undefined;
 
   cpuList: Array<CPU> | undefined;
   gpuList: Array<GPU> | undefined;
@@ -74,10 +76,12 @@ export class BuildsComponent implements OnInit {
 
   deletePC(pc: PCFullData) {
     this.pcservice.delete(pc);
+    this.success = "PC deleted!"
   }
 
   updatePC() {
-    this.pcBeingModified ? this.pcservice.update(this.pcBeingModified) : console.log("Cannot update!");
+    this.pcBeingModified ? this.pcservice.update(this.pcBeingModified) : this.error = "Couldn't update this PC!";
+    if (!this.error) this.success = "Build updated!";
     this.pcBeingModified = undefined;
   }
 
@@ -90,6 +94,8 @@ export class BuildsComponent implements OnInit {
     this.driveUpdateList = this.driveList?.filter(drive => drive.id !== this.pcBeingModified?.drive.id);
     this.caseUpdateList = this.caseList?.filter(pccase => pccase.id !== this.pcBeingModified?.case.id);
     this.psuUpdateList = this.psuList?.filter(psu => psu.id !== this.pcBeingModified?.psu.id);
+    this.error = undefined;
+    this.success = undefined;
   }
 
   cancelUpdate() {

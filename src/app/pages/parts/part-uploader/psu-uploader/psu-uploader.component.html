@@ -3,16 +3,36 @@
     <mat-label for="name">PSU name:</mat-label>
     <input matInput type="text" id="name" formControlName="name">
   </mat-form-field>
+  <div class="error"
+       *ngIf="psuFormGroup.controls['name'].errors?.['required'] && psuFormGroup.controls['name'].touched">Field is
+    reqiured!
+  </div>
+  <div class="error"
+       *ngIf="psuFormGroup.controls['name'].errors?.['minlength'] && psuFormGroup.controls['name'].dirty">
+    Name should be 10 characters long minimum
+  </div>
   <br>
   <mat-form-field>
     <mat-label for="voltage">Voltage:</mat-label>
     <input matInput type="number" id="voltage" formControlName="voltage">
   </mat-form-field>
+  <div class="error"
+       *ngIf="psuFormGroup.controls['voltage'].errors?.['required'] && psuFormGroup.controls['voltage'].touched">Field
+    is
+    reqiured!
+  </div>
   <br>
   <mat-form-field>
     <mat-label for="output">Output:</mat-label>
     <input matInput type="number" id="output" formControlName="output">
   </mat-form-field>
+  <div class="error"
+       *ngIf="psuFormGroup.controls['output'].errors?.['required'] && psuFormGroup.controls['output'].touched">Field is
+    reqiured!
+  </div>
   <br>
   <button mat-raised-button type="submit" color="primary">Upload</button>
+  <div class="success"
+       *ngIf="success">{{ success }}
+  </div>
 </form>

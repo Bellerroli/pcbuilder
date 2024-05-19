@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PCPart} from "../../shared/models/PCPart";
 import {PcpartService} from "../../shared/services/pcpart.service";
 
@@ -7,22 +7,23 @@ import {PcpartService} from "../../shared/services/pcpart.service";
   templateUrl: './parts.component.html',
   styleUrl: './parts.component.scss'
 })
-export class PartsComponent implements OnInit{
+export class PartsComponent implements OnInit {
   pcPartCategory: string = "CPU";
   pcParts: Array<PCPart> = [];
 
 
-  constructor(private pcpartService: PcpartService) {}
+  constructor(private pcpartService: PcpartService) {
+  }
+
   ngOnInit() {
-    this.pcpartService.findAll(this.pcPartCategory).subscribe(data=> {
+    this.pcpartService.findAll(this.pcPartCategory).subscribe(data => {
       this.pcParts = data as Array<PCPart>;
     });
   }
 
-  changeCategory(newCategory:string){
+  changeCategory(newCategory: string) {
     this.pcPartCategory = newCategory;
-    this.pcpartService.findAll(this.pcPartCategory).subscribe(data=> {
-      console.log(data);
+    this.pcpartService.findAll(this.pcPartCategory).subscribe(data => {
       this.pcParts = data as Array<PCPart>;
     });
   }

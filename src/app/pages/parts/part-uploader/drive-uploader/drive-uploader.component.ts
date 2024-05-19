@@ -9,6 +9,7 @@ import {Drive} from "../../../../shared/models/Drive";
   styleUrl: './drive-uploader.component.scss'
 })
 export class DriveUploaderComponent {
+  success: string | undefined;
   driveFormGroup: FormGroup = new FormGroup({
     name: new FormControl('', [
       Validators.minLength(10),
@@ -31,6 +32,7 @@ export class DriveUploaderComponent {
       type: this.driveFormGroup.get("type")?.value
     })
     this.resetForm(this.driveFormGroup);
+    this.success = "Part saved!"
   }
 
   resetForm(form: FormGroup) {

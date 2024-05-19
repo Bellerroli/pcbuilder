@@ -3,16 +3,35 @@
     <mat-label for="name">RAM name:</mat-label>
     <input matInput type="text" id="name" formControlName="name">
   </mat-form-field>
+  <div class="error"
+       *ngIf="ramFormGroup.controls['name'].errors?.['required'] && ramFormGroup.controls['name'].touched">Field is
+    reqiured!
+  </div>
+  <div class="error"
+       *ngIf="ramFormGroup.controls['name'].errors?.['minlength'] && ramFormGroup.controls['name'].dirty">
+    Name should be 10 characters long minimum
+  </div>
   <br>
   <mat-form-field>
     <mat-label for="size">Size(in GB):</mat-label>
     <input matInput type="number" id="size" formControlName="size">
   </mat-form-field>
+  <div class="error"
+       *ngIf="ramFormGroup.controls['size'].errors?.['required'] && ramFormGroup.controls['size'].touched">Field is
+    reqiured!
+  </div>
   <br>
   <mat-form-field>
     <mat-label for="type">Socket type:</mat-label>
     <input matInput type="text" id="type" formControlName="type">
   </mat-form-field>
+  <div class="error"
+       *ngIf="ramFormGroup.controls['type'].errors?.['required'] && ramFormGroup.controls['type'].touched">Field is
+    reqiured!
+  </div>
   <br>
   <button mat-raised-button type="submit" color="primary">Upload</button>
+  <div class="success"
+       *ngIf="success">{{ success }}
+  </div>
 </form>

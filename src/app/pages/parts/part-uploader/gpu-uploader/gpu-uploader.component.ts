@@ -8,6 +8,7 @@ import {GPU} from "../../../../shared/models/GPU";
   styleUrl: './gpu-uploader.component.scss'
 })
 export class GpuUploaderComponent {
+  success: string | undefined;
   gpuFormGroup: FormGroup = new FormGroup({
     name: new FormControl('', [
       Validators.minLength(10),
@@ -31,6 +32,7 @@ export class GpuUploaderComponent {
       memorySize: this.gpuFormGroup.get("memorySize")?.value
     })
     this.resetForm(this.gpuFormGroup);
+    this.success = "Part saved!"
   }
 
   resetForm(form: FormGroup) {

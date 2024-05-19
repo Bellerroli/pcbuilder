@@ -3,16 +3,37 @@
     <mat-label for="name">GPU name:</mat-label>
     <input matInput type="text" id="name" formControlName="name">
   </mat-form-field>
+  <div class="error"
+       *ngIf="gpuFormGroup.controls['name'].errors?.['required'] && gpuFormGroup.controls['name'].touched">Field is
+    reqiured!
+  </div>
+  <div class="error"
+       *ngIf="gpuFormGroup.controls['name'].errors?.['minlength'] && gpuFormGroup.controls['name'].dirty">
+    Name should be 10 characters long minimum
+  </div>
   <br>
   <mat-form-field>
     <mat-label for="clockspeed">Clockspeed:</mat-label>
     <input matInput type="number" id="clockspeed" formControlName="clockSpeed">
   </mat-form-field>
+  <div class="error"
+       *ngIf="gpuFormGroup.controls['clockSpeed'].errors?.['required'] && gpuFormGroup.controls['clockSpeed'].touched">
+    Field is
+    reqiured!
+  </div>
   <br>
   <mat-form-field>
     <mat-label for="memory">Size of memory(in GB):</mat-label>
     <input matInput type="number" id="memory" formControlName="memorySize">
   </mat-form-field>
+  <div class="error"
+       *ngIf="gpuFormGroup.controls['memorySize'].errors?.['required'] && gpuFormGroup.controls['memorySize'].touched">
+    Field is
+    reqiured!
+  </div>
   <br>
   <button mat-raised-button type="submit" color="primary">Upload</button>
+  <div class="success"
+       *ngIf="success">{{ success }}
+  </div>
 </form>

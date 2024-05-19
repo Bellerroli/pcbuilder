@@ -3,7 +3,7 @@
     "webker-pcbuilder": {
       "hosting": {
         "pcbuilder": [
-          "webker-pcbuilder"
+          "pcbuilder"
         ]
       }
     }

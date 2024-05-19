@@ -1,3 +1,5 @@
+<div class="error msg" *ngIf="error">{{ error }}</div>
+<div class="success msg" *ngIf="success">{{ success }}</div>
 <div id="card-container">
   <mat-card *ngFor="let pc of userFullPCs; index as i">
     <mat-card-header>
@@ -56,11 +58,19 @@
         <mat-option [value]="pcBeingModified.ram">{{ pcBeingModified.ram.name }}</mat-option>
         <mat-option *ngFor="let ram of ramUpdateList" [value]="ram">{{ ram.name }}</mat-option>
       </mat-select>
+      <mat-form-field>
+        <mat-label>Number of RAMs</mat-label>
+        <input matInput type="number" [(ngModel)]="pcBeingModified.ramNumber">
+      </mat-form-field>
       <div class="card-label">Drive</div>
       <mat-select [(value)]="pcBeingModified.drive">
         <mat-option [value]="pcBeingModified.drive">{{ pcBeingModified.drive.name }}</mat-option>
         <mat-option *ngFor="let drive of driveUpdateList" [value]="drive">{{ drive.name }}</mat-option>
       </mat-select>
+      <mat-form-field>
+        <mat-label>Number of Drives</mat-label>
+        <input matInput type="number" [(ngModel)]="pcBeingModified.driveNumber">
+      </mat-form-field>
       <div class="card-label">PSU</div>
       <mat-select [(value)]="pcBeingModified.psu">
         <mat-option [value]="pcBeingModified.psu">{{ pcBeingModified.psu.name }}</mat-option>

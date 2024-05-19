@@ -6,67 +6,110 @@
         <mat-form-field>
           <mat-label>CPU</mat-label>
           <mat-select formControlName="cpu" placeholder="Choose a CPU">
-            <mat-option *ngFor="let cpu of cpuList" [value]="cpu">{{cpu.name}}</mat-option>
+            <mat-option *ngFor="let cpu of cpuList" [value]="cpu">{{ cpu.name }}</mat-option>
           </mat-select>
         </mat-form-field>
+        <div class="error"
+             *ngIf="pcBuildForm.controls['cpu'].errors?.['required'] && pcBuildForm.controls['cpu'].touched">Field is
+          reqiured!
+        </div>
       </div>
       <div class="content">
         <mat-form-field>
           <mat-label>GPU</mat-label>
           <mat-select formControlName="gpu" placeholder="Choose a GPU">
-            <mat-option *ngFor="let gpu of gpuList" [value]="gpu">{{gpu.name}}</mat-option>
+            <mat-option *ngFor="let gpu of gpuList" [value]="gpu">{{ gpu.name }}</mat-option>
           </mat-select>
         </mat-form-field>
+        <div class="error"
+             *ngIf="pcBuildForm.controls['gpu'].errors?.['required'] && pcBuildForm.controls['gpu'].touched">Field is
+          reqiured!
+        </div>
       </div>
       <div class="content">
         <mat-form-field>
           <mat-label>Motherboard</mat-label>
           <mat-select id="motherboard" formControlName="motherboard" placeholder="Choose a Motherboard">
-            <mat-option *ngFor="let mb of mbList" [value]="mb">{{mb.name}}</mat-option>
+            <mat-option *ngFor="let mb of mbList" [value]="mb">{{ mb.name }}</mat-option>
           </mat-select>
         </mat-form-field>
+        <div class="error"
+             *ngIf="pcBuildForm.controls['motherboard'].errors?.['required'] && pcBuildForm.controls['motherboard'].touched">
+          Field is
+          reqiured!
+        </div>
       </div>
       <div class="content">
         <mat-form-field>
           <mat-label>RAM</mat-label>
           <mat-select formControlName="ram" placeholder="Choose a RAM">
-            <mat-option *ngFor="let ram of ramList" [value]="ram">{{ram.name}}</mat-option>
+            <mat-option *ngFor="let ram of ramList" [value]="ram">{{ ram.name }}</mat-option>
           </mat-select>
         </mat-form-field>
+        <div class="error"
+             *ngIf="pcBuildForm.controls['ram'].errors?.['required'] && pcBuildForm.controls['ram'].touched">Field is
+          reqiured!
+        </div>
         <mat-form-field>
           <mat-label>Number of rams</mat-label>
           <input matInput type="number" id="ram-number" formControlName="ramNumber">
         </mat-form-field>
+        <div class="error"
+             *ngIf="pcBuildForm.controls['ramNumber'].errors?.['required'] && pcBuildForm.controls['ramNumber'].touched">
+          Field is
+          reqiured!
+        </div>
       </div>
       <div class="content">
         <mat-form-field>
           <mat-label>PSU</mat-label>
           <mat-select formControlName="psu" placeholder="Choose a PSU">
-            <mat-option *ngFor="let psu of psuList" [value]="psu">{{psu.name}}</mat-option>
+            <mat-option *ngFor="let psu of psuList" [value]="psu">{{ psu.name }}</mat-option>
           </mat-select>
         </mat-form-field>
+        <div class="error"
+             *ngIf="pcBuildForm.controls['psu'].errors?.['required'] && pcBuildForm.controls['psu'].touched">Field is
+          reqiured!
+        </div>
       </div>
       <div class="content">
         <mat-form-field>
           <mat-label>PC case</mat-label>
           <mat-select formControlName="case" placeholder="Choose a Case">
-            <mat-option *ngFor="let case of caseList" [value]="case">{{case.name}}</mat-option>
+            <mat-option *ngFor="let case of caseList" [value]="case">{{ case.name }}</mat-option>
           </mat-select>
         </mat-form-field>
+        <div class="error"
+             *ngIf="pcBuildForm.controls['case'].errors?.['required'] && pcBuildForm.controls['case'].touched">Field is
+          reqiured!
+        </div>
       </div>
       <div class="content">
         <mat-form-field>
           <mat-label for="drive">Choose a drive</mat-label>
           <mat-select name="cpu" id="drive" formControlName="drive" placeholder="Choose a Drive">
-            <mat-option *ngFor="let drive of driveList" [value]="drive">{{drive.name}}</mat-option>
+            <mat-option *ngFor="let drive of driveList" [value]="drive">{{ drive.name }}</mat-option>
           </mat-select>
         </mat-form-field>
+        <div class="error"
+             *ngIf="pcBuildForm.controls['drive'].errors?.['required'] && pcBuildForm.controls['drive'].touched">Field
+          is
+          reqiured!
+        </div>
         <mat-form-field>
           <mat-label for="drive-number">Number of drives</mat-label>
           <input matInput type="number" id="drive-number" formControlName="driveNumber">
         </mat-form-field>
+        <div class="error"
+             *ngIf="pcBuildForm.controls['driveNumber'].errors?.['required'] && pcBuildForm.controls['driveNumber'].touched">
+          Field is
+          reqiured!
+        </div>
       </div>
       <button mat-raised-button type="submit" color="primary">Save</button>
+      <div class="success"
+           *ngIf="success">{{ success }}
+      </div>
     </form>
   </div>
 </div>

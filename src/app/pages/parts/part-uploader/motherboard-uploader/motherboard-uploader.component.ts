@@ -8,7 +8,7 @@ import {Motherboard} from "../../../../shared/models/Motherboard";
   styleUrl: './motherboard-uploader.component.scss'
 })
 export class MotherboardUploaderComponent {
-
+  success: string | undefined;
   mbFormGroup: FormGroup = new FormGroup({
     name: new FormControl('', [
       Validators.minLength(10),
@@ -27,6 +27,7 @@ export class MotherboardUploaderComponent {
       ramNumbers: this.mbFormGroup.get("ramNumbers")?.value
     })
     this.resetForm(this.mbFormGroup);
+    this.success = "Part saved!"
   }
 
   resetForm(form: FormGroup) {

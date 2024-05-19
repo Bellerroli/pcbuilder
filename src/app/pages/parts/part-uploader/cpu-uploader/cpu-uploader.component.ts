@@ -8,7 +8,7 @@ import {CPU} from "../../../../shared/models/CPU";
   styleUrl: './cpu-uploader.component.scss'
 })
 export class CpuUploaderComponent {
-
+  success: string | undefined;
   cpuFormGroup: FormGroup = new FormGroup({
     name: new FormControl('', [
       Validators.minLength(10),
@@ -25,12 +25,14 @@ export class CpuUploaderComponent {
   @Output() cpuEmitter: EventEmitter<CPU> = new EventEmitter<CPU>();
 
   onSubmit() {
+    if (this.cpuFormGroup.invalid) return;
     this.cpuEmitter.emit({
       id: '', name: this.cpuFormGroup.get("name")?.value,
       clockSpeed: this.cpuFormGroup.get("clockSpeed")?.value,
       cores: this.cpuFormGroup.get("cores")?.value
     })
     this.resetForm(this.cpuFormGroup);
+    this.success = "Part saved!"
   }
 
   resetForm(form: FormGroup) {

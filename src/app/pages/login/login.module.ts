@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { LoginRoutingModule } from './login-routing.module';
-import { LoginComponent } from './login.component';
+import {LoginRoutingModule} from './login-routing.module';
+import {LoginComponent} from './login.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatButton} from "@angular/material/button";
@@ -20,7 +20,8 @@ import {MatInput} from "@angular/material/input";
     MatFormField,
     MatLabel,
     MatButton,
-    MatInput
+    MatInput,
   ]
 })
-export class LoginModule { }
+export class LoginModule {
+}

@@ -8,7 +8,6 @@ import {Motherboard} from "../../shared/models/Motherboard";
 import {Drive} from "../../shared/models/Drive";
 import {PCCase} from "../../shared/models/PCCase";
 import {PSU} from "../../shared/models/PSU";
-import {PC} from "../../shared/models/PC";
 import {AuthService} from "../../shared/services/auth.service";
 import {PcService} from "../../shared/services/pc.service";
 import {PCFullData} from "../../shared/models/PCFullData";
@@ -18,7 +17,10 @@ import {PCFullData} from "../../shared/models/PCFullData";
   templateUrl: './builder.component.html',
   styleUrl: './builder.component.scss'
 })
-export class BuilderComponent implements OnInit{
+export class BuilderComponent implements OnInit {
+  error: string | undefined;
+  success: string | undefined;
+
   cpuList: Array<CPU> | undefined;
   gpuList: Array<GPU> | undefined;
   ramList: Array<RAM> | undefined;
@@ -29,59 +31,59 @@ export class BuilderComponent implements OnInit{
   userID: string | undefined;
 
   pcBuildForm: FormGroup = new FormGroup({
-    cpu : new FormControl('',[
+    cpu: new FormControl('', [
       Validators.required
     ]),
-    gpu : new FormControl('',[
+    gpu: new FormControl('', [
       Validators.required
     ]),
-    ram : new FormControl('',[
+    ram: new FormControl('', [
       Validators.required
     ]),
-    motherboard : new FormControl('',[
+    motherboard: new FormControl('', [
       Validators.required
     ]),
-    case : new FormControl('',[
+    case: new FormControl('', [
       Validators.required
     ]),
-    ramNumber : new FormControl('',[
+    ramNumber: new FormControl('', [
       Validators.required
     ]),
-    psu : new FormControl('',[
+    psu: new FormControl('', [
       Validators.required
     ]),
-    drive : new FormControl('',[
+    drive: new FormControl('', [
       Validators.required
     ]),
-    driveNumber : new FormControl('',[
+    driveNumber: new FormControl('', [
       Validators.required
     ])
   });
 
   ngOnInit(): void {
-    this.partservice.findAll("CPU").subscribe(data=>{
+    this.partservice.findAll("CPU").subscribe(data => {
       this.cpuList = data as Array<CPU>;
     })
-    this.partservice.findAll("GPU").subscribe(data=>{
+    this.partservice.findAll("GPU").subscribe(data => {
       this.gpuList = data as Array<GPU>;
     })
-    this.partservice.findAll("RAM").subscribe(data=>{
+    this.partservice.findAll("RAM").subscribe(data => {
       this.ramList = data as Array<RAM>;
     })
-    this.partservice.findAll("Drive").subscribe(data=>{
+    this.partservice.findAll("Drive").subscribe(data => {
       this.driveList = data as Array<Drive>;
     })
-    this.partservice.findAll("PSU").subscribe(data=>{
+    this.partservice.findAll("PSU").subscribe(data => {
       this.psuList = data as Array<PSU>;
     })
-    this.partservice.findAll("Motherboard").subscribe(data=>{
+    this.partservice.findAll("Motherboard").subscribe(data => {
       this.mbList = data as Array<Motherboard>;
     })
-    this.partservice.findAll("Case").subscribe(data=>{
+    this.partservice.findAll("Case").subscribe(data => {
       this.caseList = data as Array<PCCase>;
     })
 
-    this.authService.currUser().subscribe(user=>{
+    this.authService.currUser().subscribe(user => {
       this.userID = user?.uid;
     })
   }
@@ -90,6 +92,7 @@ export class BuilderComponent implements OnInit{
   }
 
   onSubmit() {
+    if (this.pcBuildForm.invalid) return;
     this.pcService.create({
       id: "",
       userID: this.userID,
@@ -104,7 +107,9 @@ export class BuilderComponent implements OnInit{
       motherboard: this.pcBuildForm.get("motherboard")?.value,
     } as PCFullData)
     this.resetForm(this.pcBuildForm);
+    this.success = "Build saved!"
   }
+
   resetForm(form: FormGroup) {
     form.reset();
     Object.keys(form.controls).forEach(key => {

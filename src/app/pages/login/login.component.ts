@@ -6,10 +6,10 @@ import {Router} from "@angular/router";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  styleUrl: './login.component.scss',
 })
 export class LoginComponent {
-  error: string = "";
+  error: string | undefined;
   loginForm: FormGroup = new FormGroup({
     email: new FormControl('', [
       Validators.required,
@@ -25,13 +25,13 @@ export class LoginComponent {
   }
 
   login() {
+    if (this.loginForm.invalid) return;
     this.auth.login(this.loginForm.get('email')?.value, this.loginForm.get('password')?.value).then(cred => {
-      console.log(cred);
       this.router.navigateByUrl("/main").catch(err => {
         console.error(err)
       });
     }).catch(err => {
-      console.error(err);
+      console.log(err)
       this.error = "Wrong credentials!";
     })
     this.resetForm(this.loginForm);

@@ -15,6 +15,9 @@
          class="error">Email
       is required!
     </div>
+    <div *ngIf="signupForm.controls['email'].errors?.['pattern'] && signupForm.controls['email'].touched"
+         class="error">This is not a valid e-mail address!
+    </div>
     <mat-form-field>
       <mat-label>Password</mat-label>
       <input matInput type="password" id="pwd" formControlName="password">
@@ -31,11 +34,16 @@
       <mat-label>Confirm Password</mat-label>
       <input matInput type="password" id="repwd" formControlName="rePassword">
     </mat-form-field>
-    <div *ngIf="signupForm.errors?.['noMatch'] && signupForm.controls['rePassword'].touched"
-         class="error">{{ signupForm.errors?.["noMatch"] }}
+    <div *ngIf="confirmError"
+         class="error">Passwords don't match!
+    </div>
+    <div *ngIf="signupForm.controls['rePassword'].errors?.['required'] && signupForm.controls['rePassword'].touched"
+         class="error">Please confirm your password!
     </div>
     <br>
     <button mat-raised-button type="submit" color="primary">Sign Up</button>
+    <div class="error" *ngIf="error">{{ error }}</div>
+    <div class="success" *ngIf="success">{{ success }}</div>
   </form>
 </div>
 

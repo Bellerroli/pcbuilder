@@ -1,5 +1,17 @@
-:host ::ng-deep button:hover{
+:host ::ng-deep button:hover {
   color: black;
   background-color: #dddddd;
+}
+
+:host ::ng-deep .error {
+  color: red;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+:host ::ng-deep .success {
+  color: green;
+  font-weight: bold;
+  margin: 10px 0;
 }
 

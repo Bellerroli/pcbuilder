@@ -8,6 +8,7 @@ import {PSU} from "../../../../shared/models/PSU";
   styleUrl: './psu-uploader.component.scss'
 })
 export class PsuUploaderComponent {
+  success: string | undefined;
   psuFormGroup: FormGroup = new FormGroup({
     name: new FormControl('', [
       Validators.minLength(10),
@@ -30,6 +31,7 @@ export class PsuUploaderComponent {
       output: this.psuFormGroup.get("output")?.value
     })
     this.resetForm(this.psuFormGroup);
+    this.success = "Part saved!"
   }
 
   resetForm(form: FormGroup) {
